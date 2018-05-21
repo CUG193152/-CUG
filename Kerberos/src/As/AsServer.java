@@ -1,6 +1,7 @@
 package As;
 
 import java.io.IOException;
+import java.net.Socket;
 import java.util.Scanner;
 
 import Socket.SocketServer;
@@ -13,7 +14,6 @@ public class AsServer {
 	private static void startServer() {
         System.out.println("Start a server.");
         SocketServer server = new SocketServer(5556, new EchoHandler());
-
         System.out.println("Please type anything and press enter to close the server...");
         inputScanner.next();
         server.close();

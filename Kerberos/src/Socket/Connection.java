@@ -23,4 +23,9 @@ public class Connection {
             e.printStackTrace();
         }
     }
+
+	public Socket getSocket() {
+		return socket;
+	}
+
 }

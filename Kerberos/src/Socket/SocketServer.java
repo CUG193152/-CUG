@@ -29,7 +29,12 @@ public class SocketServer {
         return messageHandler;
     }
     
-    /*
+    public ServerSocket getServerSocket() {
+		return serverSocket;
+	}
+
+
+	/*
      * Ready for use.
      */
     public void close() {
