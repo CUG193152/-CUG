@@ -28,7 +28,7 @@ public class ClientConnectionV {
 		String TS5 = new Tool().getTime();
 		String Authenticator_C = Authenticator_C(IDc, Adc, TS5, K_C_V);
 		System.out.println(Ticket_V + " " + Authenticator_C);
-		String string =Ticket_V + " " + Authenticator_C;
+		String string ="000011000 "+Ticket_V + " " + Authenticator_C;
 		client.println(string);
 		System.out.println("Got the following message from the server:");
 		String message=client.readLine();

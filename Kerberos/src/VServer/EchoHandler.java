@@ -6,7 +6,6 @@ import java.util.Map;
 import Socket.Connection;
 import Socket.MessageHandler;
 import Tools.Des;
-import Tools.Tool;
 
 class EchoHandler implements MessageHandler {
 	@Override
@@ -15,15 +14,14 @@ class EchoHandler implements MessageHandler {
 		System.out.println(message);
 		Map<String, String> map = unpack(message);
 		
-		
-		Tool tool = new Tool();
+
 		Des des=new Des();
 		String TICKET_V = map.get("TICKET_V");
 		String Authenticator_C = map.get("Authenticator_C");
 		Map<String, String> ticketMap=unpackTicket_V(des.Decrypt(TICKET_V, "cccccccc"));
 		Map<String, String> authenticator_cMap=unpackAuthenticator_C(des.Decrypt(Authenticator_C,ticketMap.get("K_C_V")));
 		String TS5=authenticator_cMap.get("TS5");
-		String returnMessage =des.Encrypt(TS5+1, ticketMap.get("K_C_V")) ;
+		String returnMessage =des.Encrypt("001100000 "+TS5+1, ticketMap.get("K_C_V")) ;
 		System.out.println("K_C_V is "+ticketMap.get("K_C_V"));
 		System.out.println("Send  message  to the client.");
 		connection.println(returnMessage);
@@ -32,7 +30,7 @@ class EchoHandler implements MessageHandler {
 	public Map<String, String> unpack(String message) {// 将client传得消息分离
 		String[] strArr = message.split(" ");
 		Map<String, String> map = new HashMap<String, String>();
-		String[] key = {"TICKET_V", "Authenticator_C" };
+		String[] key = {"HEAD","TICKET_V", "Authenticator_C" };
 		for (int i = 0; i < strArr.length; i++) {
 			map.put(key[i], strArr[i]);
 		}

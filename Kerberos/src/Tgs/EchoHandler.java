@@ -32,7 +32,7 @@ class EchoHandler implements MessageHandler {
 		// Tickettgs = EKtgs[Kc,tgs|| IDC|| ADC|| IDtgs || TS2 || Lifetime2]
 		String LifeTime4="1000";
 		String Ticket_V = des.Encrypt(K_C_V+" "+ticketMap.get("ID_C")+" "+ticketMap.get("AD_C")+" "+ticketMap.get("ID_TGS")+" "+TS4+" "+LifeTime4, "cccccccc");
-		String returnMessage =des.Encrypt(K_C_V+" "+ID_V+" "+TS4+" "+Ticket_V, ticketMap.get("K_C_TGS")) ;
+		String returnMessage =des.Encrypt("001000000 "+K_C_V+" "+ID_V+" "+TS4+" "+Ticket_V, ticketMap.get("K_C_TGS")) ;
 		System.out.println("K_C_TGS is "+ticketMap.get("K_C_TGS"));
 		System.out.println("Send  message  to the client.");
 		connection.println(returnMessage);
@@ -41,7 +41,7 @@ class EchoHandler implements MessageHandler {
 	public Map<String, String> unpack(String message) {// 将client传得消息分离
 		String[] strArr = message.split(" ");
 		Map<String, String> map = new HashMap<String, String>();
-		String[] key = { "ID_V", "TICKET_TGS", "Authenticator_C" };
+		String[] key = { "HEAD","ID_V", "TICKET_TGS", "Authenticator_C" };
 		for (int i = 0; i < strArr.length; i++) {
 			map.put(key[i], strArr[i]);
 		}

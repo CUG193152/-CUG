@@ -35,8 +35,9 @@ public class ClientConnectionTGS {
 		// System.out.println("Please type something to send to the server...");
 		String ID_V = "V001";
 		String Authenticator_C = Authenticator_C(IDc, Adc, TS3, K_C_TGS);
-		System.out.println(ID_V + " " + ticket + " " + Authenticator_C);
-		String string = ID_V + " " + ticket + " " + Authenticator_C;
+		String Head="000010000";
+		System.out.println(Head+" "+ID_V + " " + ticket + " " + Authenticator_C);
+		String string =Head +" "+ID_V + " " + ticket + " " + Authenticator_C;
 		client.println(string);
 
 		System.out.println("Got the following message from the server:");
@@ -72,7 +73,7 @@ public class ClientConnectionTGS {
 	public static Map<String, String> unpack(String message) {// 将client传得消息分离
 		String[] strArr = message.split(" ");
 		Map<String, String> map = new HashMap<String, String>();
-		String[] key = { "K_C_V", "ID_V", "TS4", "TICKET_V"};
+		String[] key = { "HEAD","K_C_V", "ID_V", "TS4", "TICKET_V"};
 		for (int i = 0; i < strArr.length; i++) {
 			map.put(key[i], strArr[i]);
 		}

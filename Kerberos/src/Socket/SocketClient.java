@@ -28,6 +28,7 @@ public class SocketClient {
             writer = new PrintWriter(new OutputStreamWriter(
                                      socket.getOutputStream()), true);
             writer.println(MessageFlag.pureMessage + message);
+//            writer.println( message);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

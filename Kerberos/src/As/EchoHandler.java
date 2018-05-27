@@ -34,6 +34,7 @@ class EchoHandler implements MessageHandler {
         System.out.println(TS1);
         System.out.println("Send back the message back to the client.");
         connection.println(returnMessage);
+        
     }
     public Map<String, String> unpack(String message) {//将client传得消息分离
     	  String[] strArr = message.split(" ");

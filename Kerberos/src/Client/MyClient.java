@@ -22,6 +22,7 @@ public class MyClient {
 		String K_C_V=clientConnectionTGS.getK_C_V();
 		String Ticket_V=clientConnectionTGS.getTicket_V();
         ClientConnectionV clientConnectionV= new ClientConnectionV(clientToV,K_C_V,Ticket_V);
+        
 	}
 	
 	}
