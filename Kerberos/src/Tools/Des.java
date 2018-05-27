@@ -1,21 +1,26 @@
 package Tools;
 
+
+
+
+
 public class Des {
-	public String XOR(String m,String c){//å¼‚æˆ–è¿ç®—
+	public String XOR(String m,String c){//Òì»òÔËËã
 		String temp="";
 		if(m.length()==c.length()){
 			for(int i=0;i<m.length();i++){
 				temp+=m.charAt(i)^c.charAt(i);
 			}
+			//System.out.println("Òì»ò"+temp);
 		}
 		else{
-			System.out.println("è¿›è¡Œå¼‚æˆ–çš„ä¸¤ä¸ªå­—ç¬¦ä¸²é•¿åº¦ä¸ç­‰ï¼Œä¸èƒ½è¿›è¡Œå¼‚æˆ–æ“ä½œ");
+			System.out.println("½øĞĞÒì»òµÄÁ½¸ö×Ö·û´®³¤¶È²»µÈ£¬²»ÄÜ½øĞĞÒì»ò²Ù×÷");
 		}
 		return temp;
 	}
 	
-	public String Initial_Permutation(String binary){//IPç½®æ¢
-		int []IP_Table = {//åˆå§‹ç½®æ¢è¡¨IP
+	public String Initial_Permutation(String binary){//IPÖÃ»»
+		int []IP_Table = {//³õÊ¼ÖÃ»»±íIP
 				58,50,42,34,26,18,10,2,
 				60,52,44,36,28,20,12,4,
 				62,54,46,38,30,22,14,6,
@@ -26,28 +31,30 @@ public class Des {
 				63,55,47,39,31,23,15,7
 				};
 		String temp_binary="";
-		for(int i=0;i<IP_Table.length;i++){//ç½®æ¢è¿‡ç¨‹
+		for(int i=0;i<IP_Table.length;i++){//ÖÃ»»¹ı³Ì
 			temp_binary += binary.charAt(IP_Table[i]-1);
 		}
+		//System.out.println("³õÊ¼ÖÃ»»IPºó£º "+temp_binary);
 		return temp_binary;
 	}
 
-	public String Initial_Permutation_1(String binary){//IPé€†ç½®æ¢  
-		int []IP_1_Table = {//é€†åˆå§‹ç½®æ¢è¡¨IP^-1
+	public String Initial_Permutation_1(String binary){//IPÄæÖÃ»»  
+		int []IP_1_Table = {//Äæ³õÊ¼ÖÃ»»±íIP^-1
 				40,8,48,16,56,24,64,32,39,7,47,15,55,23,63,31,
 				38,6,46,14,54,22,62,30,37,5,45,13,53,21,61,29,
 				36,4,44,12,52,20,60,28,35,3,43,11,51,19,59,27,
 				34,2,42,10,50,18,58,26,33,1,41, 9,49,17,57,25
 				};
 		String temp_binary="";
-		for(int i=0;i<IP_1_Table.length;i++){//ç½®æ¢è¿‡ç¨‹
+		for(int i=0;i<IP_1_Table.length;i++){//ÖÃ»»¹ı³Ì
 			temp_binary += binary.charAt(IP_1_Table[i]-1);
 		}
+		//System.out.println("ÄæÖÃ»»IP£º "+temp_binary);
 		return temp_binary;
 	}
 	
-	public String Expand_Substitution(String binary){//æ‰©å……/ç½®æ¢
-		 //æ‰©å……ç½®æ¢è¡¨E  
+	public String Expand_Substitution(String binary){//À©³ä/ÖÃ»»
+		 //À©³äÖÃ»»±íE  
 		int []E_Table = {31, 0, 1, 2, 3, 4,  
 		                  3, 4, 5, 6, 7, 8,  
 		                  7, 8, 9, 10,11,12,  
@@ -60,10 +67,11 @@ public class Des {
 		for(int i=0;i<48;i++){
 			expand_binary+=binary.charAt(E_Table[i]);
 		}
+		//System.out.println("À©Õ¹ÖÃ»»"+expand_binary.length()+ "  "+ "  "+expand_binary);
 		return expand_binary;
 	}
 	
-	public String PC_1(String cipher_code){//ç½®æ¢é€‰æ‹©1  
+	public String PC_1(String cipher_code){//ÖÃ»»Ñ¡Ôñ1  
 		int []PC_1_Table={57,49,41,33,25,17,9,
 				1,58,50,42,34,26,18,
 				10,2,59,51,43,35,27,
@@ -80,10 +88,12 @@ public class Des {
 		for(int i=28;i<56;i++){
 			D0+=cipher_code.charAt(PC_1_Table[i]-1);
 		}
+		//System.out.println("ÖÃ»»Ñ¡Ôñ1"+C0.length()+" "+C0);
+		//System.out.println("ÖÃ»»Ñ¡Ôó1"+D0.length()+" "+D0);
 		return C0+D0;
 	}
 	
-	public String PC_2(String cipher_code){//ç½®æ¢/ç´§ç¼© 
+	public String PC_2(String cipher_code){//ÖÃ»»/½ôËõ 
 		int []PC_2_Table = {14,17,11,24,1,5,3,28,
 				15,6,21,10,23,19,12,4,
 				26,8,16,7,27,20,13,2,
@@ -94,23 +104,25 @@ public class Des {
 		for(int i=0;i<48;i++){
 			temp+=cipher_code.charAt(PC_2_Table[i]-1);
 		}
+		//System.out.println("ÖÃ»»½ôËõºó"+temp.length()+ "  "+temp);
 		return temp;
 	}
 	
-	public String Left_Shift(String code,int x){//å¾ªç¯å·¦ç§»xä½
+	public String Left_Shift(String code,int x){//Ñ­»·×óÒÆxÎ»
 		String First_char="";
 		String temp="";
-		for(int i=0;i<x;i++){//å°†å‰xä½å…ˆè¿›è¡Œä¿å­˜
+		for(int i=0;i<x;i++){//½«Ç°xÎ»ÏÈ½øĞĞ±£´æ
 			First_char += code.charAt(i);
 		}
-		for(int i=x;i<28;i++){//å·¦ç§»
+		for(int i=x;i<28;i++){//×óÒÆ
 			temp+=code.charAt(i);
 		}
-		temp+=First_char;//å°†å‰xä½è¡¥åœ¨åé¢
+		temp+=First_char;//½«Ç°xÎ»²¹ÔÚºóÃæ
+		//System.out.println("×óÒÆ"+x+"Î»£º   "+"³¤¶È"+temp.length()+"      "+temp);
 		return temp;
 	}
 	
-	public String Sbox(String m){//ä»£æ¢/é€‰æ‹© 
+	public String Sbox(String m){//´ú»»/Ñ¡Ôñ 
 		 int [][]S =//S1  
 	            {{14,4,13,1,2,15,11,8,3,10,6,12,5,9,0,7,  
 	              0,15,7,4,14,2,13,1,10,6,12,11,9,5,3,8,  
@@ -154,9 +166,9 @@ public class Des {
 	              }; 
 		 String temp="";
 		 String new_m="";
-		 if(m.length()==48){//æ£€éªŒmçš„é•¿åº¦æ˜¯å¦ä¸º48
-			 for(int i=0;i<8;i++){//å¯¹å…«ä¸ªç›’å­è¿›è¡Œåˆ†åˆ«å¤„ç†
-				 String Six_temp="";//å¯¹mè¿›è¡Œåˆ‡åˆ†ï¼Œæ¯å…­ä½ä¸€å—
+		 if(m.length()==48){//¼ìÑémµÄ³¤¶ÈÊÇ·ñÎª48
+			 for(int i=0;i<8;i++){//¶Ô°Ë¸öºĞ×Ó½øĞĞ·Ö±ğ´¦Àí
+				 String Six_temp="";//¶Ôm½øĞĞÇĞ·Ö£¬Ã¿ÁùÎ»Ò»¿é
 				 Six_temp=m.substring(i*6,(i+1)*6);
 				 String row="";
 				 row+=Six_temp.charAt(0);
@@ -164,17 +176,17 @@ public class Des {
 				 String column="";
 				 for(int k=1;k<5;k++)
 					 column+=Six_temp.charAt(k);
-				 int Row=0;//è¡Œ
-				 int Column=0;//åˆ—
-				 for(char c: row.toCharArray()){//å°†äºŒè¿›åˆ¶å­—ç¬¦ä¸²åºåˆ—è½¬æ¢æˆå¯¹åº”æ•°å€¼
+				 int Row=0;//ĞĞ
+				 int Column=0;//ÁĞ
+				 for(char c: row.toCharArray()){//½«¶ş½øÖÆ×Ö·û´®ĞòÁĞ×ª»»³É¶ÔÓ¦ÊıÖµ
 					 Row = Row * 2 + (c == '1' ? 1 : 0);}
 				 for(char c: column.toCharArray()){
 					 Column = Column * 2 + (c == '1' ? 1 : 0);}
 				 
-				 //ç¡®å®šè¡Œå’Œåˆ—ååœ¨å¯¹åº”çš„Sç›’ä¸­æ‰¾å‡ºç›¸åº”çš„æ•°å€¼ï¼Œå¹¶å°†å…¶è½¬æ¢æˆäºŒè¿›åˆ¶å­—ç¬¦ä¸²
-				 int location=S[i][Row*16+Column];//è½¬æ¢ååœ¨Sè¡¨ä¸­çš„æ•°å€¼ï¼Œéœ€è¦å°†å…¶è½¬æ¢ä¸ºå››ä½äºŒè¿›åˆ¶å­—ç¬¦ä¸²
-				 temp=Integer.toBinaryString(location);//è½¬æ¢ä¸º2è¿›åˆ¶
-				 if(temp.length()!=4){//æ‰©å±•ä¸ºå››ä½
+				 //È·¶¨ĞĞºÍÁĞºóÔÚ¶ÔÓ¦µÄSºĞÖĞÕÒ³öÏàÓ¦µÄÊıÖµ£¬²¢½«Æä×ª»»³É¶ş½øÖÆ×Ö·û´®
+				 int location=S[i][Row*16+Column];//×ª»»ºóÔÚS±íÖĞµÄÊıÖµ£¬ĞèÒª½«Æä×ª»»ÎªËÄÎ»¶ş½øÖÆ×Ö·û´®
+				 temp=Integer.toBinaryString(location);//×ª»»Îª2½øÖÆ
+				 if(temp.length()!=4){//À©Õ¹ÎªËÄÎ»
 					 String temp1="";
 					 for(int length=0;length<4-temp.length();length++)
 						 temp1+="0";
@@ -185,75 +197,76 @@ public class Des {
 			 }
 		 }
 		 else{
-			 System.out.println("ä»£æ¢é€‰æ‹©è¾“å…¥é•¿åº¦ä¸ä¸º48");
+			 System.out.println("´ú»»Ñ¡ÔñÊäÈë³¤¶È²»Îª48");
 		 }
-		 //System.out.println("Såˆï¼š"+new_m);
+		 //System.out.println("SºÏ£º"+new_m);
 		 return new_m;
 	}
 	
-	public String P(String binary){//Pç½®æ¢
-		int []P_Table = {//Pç½®æ¢è¡¨
+	public String P(String binary){//PÖÃ»»
+		int []P_Table = {//PÖÃ»»±í
 				16,7,20,21,29,12,28,17,
 				1,15,23,26,5,18,31,10,
 				2,8,24,14,32,27,3,9,
 				19,13,30,6,22,11,4,25,
 				};
 		String temp_binary="";
-		for(int i=0;i<P_Table.length;i++){//ç½®æ¢è¿‡ç¨‹
+		for(int i=0;i<P_Table.length;i++){//ÖÃ»»¹ı³Ì
 			temp_binary += binary.charAt(P_Table[i]-1);
 		}
+		//System.out.println("PÖÃ»»ºó£º "+temp_binary);
 		return temp_binary;
 	}
 	
-	public String F(String R,String K){//è½®å‡½æ•°R  32  K  48
+	public String F(String R,String K){//ÂÖº¯ÊıR  32  K  48
 		String temp="";
-		temp = Expand_Substitution(R);//æ‰©å……/ç½®æ¢  temp->48
-		temp = XOR(temp,K);//å¼‚æˆ–è¿ç®—    temp->48
-		temp = Sbox(temp);//ä»£æ¢/é€‰æ‹©   temp->32
-		temp = P(temp);//Pç½®æ¢  temp 32
+		temp = Expand_Substitution(R);//À©³ä/ÖÃ»»  temp->48
+		temp = XOR(temp,K);//Òì»òÔËËã    temp->48
+		temp = Sbox(temp);//´ú»»/Ñ¡Ôñ   temp->32
+		temp = P(temp);//PÖÃ»»  temp 32
 		return temp;
 	}
 	
-	public String DES(String binary,String cipher_code){//DESåŠ å¯†è¿‡ç¨‹
-		binary = Initial_Permutation(binary);//IPç½®æ¢
-		String KEY = PC_1(cipher_code);//å¯¹å¯†é’¥è¿›è¡Œç½®æ¢é€‰æ‹©1ï¼Œè¯¥è¿‡ç¨‹åªè¿›è¡Œä¸€æ¬¡
+	public String DES(String binary,String cipher_code){//DES¼ÓÃÜ¹ı³Ì
+		binary = Initial_Permutation(binary);//IPÖÃ»»
+		String KEY = PC_1(cipher_code);//¶ÔÃÜÔ¿½øĞĞÖÃ»»Ñ¡Ôñ1£¬¸Ã¹ı³ÌÖ»½øĞĞÒ»´Î
 		String L0=binary.substring(0, 32);
 		String R0=binary.substring(32,64);
 		for(int i=0;i<16;i++){
-			String C=KEY.substring(0 ,28);//å°†Kè¿›è¡Œæ‹†è§£
+			String C=KEY.substring(0 ,28);//½«K½øĞĞ²ğ½â
 			String D=KEY.substring(28,56);
-			String C0 = Left_Shift(C,Move_Times(i+1));//å°†Cå’ŒDè¿›è¡Œç§»ä½
+			String C0 = Left_Shift(C,Move_Times(i+1));//½«CºÍD½øĞĞÒÆÎ»
 			String D0 = Left_Shift(D,Move_Times(i+1));
-			String temp =F(R0,PC_2(C0+D0));//Fè½®å‡½æ•°
-			temp = XOR(temp,L0);//å¼‚æˆ–
+			String temp =F(R0,PC_2(C0+D0));//FÂÖº¯Êı
+			temp = XOR(temp,L0);//Òì»ò
 			L0=R0;
 			R0=temp;
 		}
 		return Initial_Permutation_1(L0+R0);
 	}
 
-	public String Decrypt_DES(String binary,String cipher_code){//DESè§£å¯†
-		binary = Initial_Permutation(binary);//IPç½®æ¢
-		String KEY = PC_1(cipher_code);//å¯¹å¯†é’¥è¿›è¡Œç½®æ¢é€‰æ‹©1ï¼Œè¯¥è¿‡ç¨‹åªè¿›è¡Œä¸€æ¬¡
+	public String Decrypt_DES(String binary,String cipher_code){//DES½âÃÜ
+		binary = Initial_Permutation(binary);//IPÖÃ»»
+		String KEY = PC_1(cipher_code);//¶ÔÃÜÔ¿½øĞĞÖÃ»»Ñ¡Ôñ1£¬¸Ã¹ı³ÌÖ»½øĞĞÒ»´Î
 		String L0=binary.substring(0, 32);
 		String R0=binary.substring(32,64);
 		for(int i=15;i>=0;i--){
-			String C=KEY.substring(0 ,28);//å°†Kè¿›è¡Œæ‹†è§£
+			String C=KEY.substring(0 ,28);//½«K½øĞĞ²ğ½â
 			String D=KEY.substring(28,56);
-			String C0 = Left_Shift(C,Move_Times(i+1));//å°†Cå’ŒDè¿›è¡Œç§»ä½
+			String C0 = Left_Shift(C,Move_Times(i+1));//½«CºÍD½øĞĞÒÆÎ»
 			String D0 = Left_Shift(D,Move_Times(i+1));
-			//System.out.println("ç¬¬"+i+" C  "+C0+" D  "+D0);
-			String temp =F(L0,PC_2(C0+D0));//Fè½®å‡½æ•°
-			temp = XOR(temp,R0);//å¼‚æˆ–
+			//System.out.println("µÚ"+i+" C  "+C0+" D  "+D0);
+			String temp =F(L0,PC_2(C0+D0));//FÂÖº¯Êı
+			temp = XOR(temp,R0);//Òì»ò
 			R0=L0;
 			L0=temp;
-			//System.out.println("ç¬¬"+(16-i)+"è§£å¯†"+L0+R0);
+			//System.out.println("µÚ"+(16-i)+"½âÃÜ"+L0+R0);
 		}
 		
 		return Initial_Permutation_1(L0+R0);
 	}
 	
-	public String Encrypt(String message,String cipher_code) {//æ–‡ä»¶åŠ å¯†
+	public String Encrypt(String message,String cipher_code) {//ÎÄ¼ş¼ÓÃÜ
 		cipher_code=StrToBinstr(cipher_code);
 		String temp="";
 		String temp1="";
@@ -284,6 +297,8 @@ public class Des {
 					temp=temp+DES(temp1,cipher_code);
 				}
 			}
+			//System.out.println(temp);
+			//System.out.println(temp.length());
 		}
 		else{
 			//System.out.println(m);
@@ -295,6 +310,8 @@ public class Des {
 				message=message.substring(8);
 				//System.out.println(message);
 			}
+			//System.out.println(temp);
+			//System.out.println(temp.length());
 		}
 		return temp;
       // String Encrypt_result=DES(temp,cipher_code);
@@ -302,12 +319,14 @@ public class Des {
 
     }
 	
-    public String Decrypt(String message,String cipher_code) {//æ–‡ä»¶è§£å¯†
+    public String Decrypt(String message,String cipher_code) {//ÎÄ¼ş½âÃÜ
 		cipher_code=StrToBinstr(cipher_code);
 		String temp="";
 		String temp1="";
 		int n=message.length();
+		//System.out.println("n="+n);
 		int m=n/64;
+		//System.out.println("m="+m);
 		n=n%64;
 		if(n==0){
 			for(int i=0;i<m;i++){
@@ -319,13 +338,13 @@ public class Des {
 			}
 		}
 		else{
-            System.out.println(temp+"æ•°æ®ä¸å¯¹å•Š");
+            System.out.println(temp+"Êı¾İ²»¶Ô°¡");
         }
 		
 		return BinstrToStr(temp);
     }
     
-	public int Move_Times(int n){//å¯¹å·¦ç§»æ¬¡æ•°çš„è§„å®š 
+	public int Move_Times(int n){//¶Ô×óÒÆ´ÎÊıµÄ¹æ¶¨ 
 		int temp=0;
 		int []MOVE_TIMES = {1,1,2,2,2,2,2,2,1,2,2,2,2,2,2,1};
 		for(int i=0;i<n;i++){
@@ -334,15 +353,17 @@ public class Des {
 		return temp;
 	}
 	
-	public String StrToBinstr(String str) {//å­—ç¬¦ä¸²è½¬äºŒè¿›åˆ¶
+	public String StrToBinstr(String str) {//×Ö·û´®×ª¶ş½øÖÆ
         char[] strChar=str.toCharArray();
         String result="";
         String temp="";
        
         for(int i=0;i<strChar.length;i++){
         	temp=Integer.toBinaryString(strChar[i]);
+        	//System.out.println(temp+" "+temp.length());
             int num=temp.length();
             String other="";
+            //System.out.println(result.length());
             for(int k=0;k<8-num;k++){
             	
             	other+="0";
@@ -350,10 +371,11 @@ public class Des {
             }
             result +=other+temp;
         }
+        //System.out.println(result+"       "+result.length());
         return result;
     }
 
-	public String BinstrToStr(String binStr) { //å°†äºŒè¿›åˆ¶å­—ç¬¦ä¸²è½¬æ¢æˆå­—ç¬¦ä¸²
+	public String BinstrToStr(String binStr) { //½«¶ş½øÖÆ×Ö·û´®×ª»»³É×Ö·û´®
 		String result="";
 		for(int i=0;i*8<binStr.length();i++){
 			String temp=binStr.substring(i*8, (i+1)*8);
