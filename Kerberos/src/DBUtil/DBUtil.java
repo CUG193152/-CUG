@@ -11,7 +11,7 @@ public class DBUtil {
         Connection connecter = null;  
         try {  
             Class.forName("com.mysql.jdbc.Driver"); // java反射，固定写法  
-            connecter = (Connection) DriverManager.getConnection(url, "root", "111222zz");  
+            connecter = (Connection) DriverManager.getConnection(url, "root", "123456");  
         } catch (ClassNotFoundException e) {  
             e.printStackTrace();  
         } catch (SQLException e) {  

@@ -23,9 +23,9 @@ class EchoHandler implements MessageHandler {
         String AD_C=getIP(connection.getSocket());
         String TS2=new Tool().getTime();
         String Lifetime="1000";
-        String Ticket_TGS=new Des().Encrypt(K_C_TGS+"&"+ID_C+"&"+AD_C+"&"+ID_TGS+"&"+TS2+"&"+Lifetime, "cccccccc") ;
+        String Ticket_TGS=new Des().Encrypt(K_C_TGS+" "+ID_C+" "+AD_C+" "+ID_TGS+" "+TS2+" "+Lifetime, "cccccccc") ;
         String K_C=new ConnectionMysql().getPassword(ID_C);
-        String returnMessage=new Des().Encrypt("000100000&"+K_C_TGS+"&"+ID_TGS+"&"+TS2+"&"+Lifetime+"&"+Ticket_TGS, K_C);
+        String returnMessage=new Des().Encrypt("000100000 "+K_C_TGS+" "+ID_TGS+" "+TS2+" "+Lifetime+" "+Ticket_TGS, K_C);
         System.out.println(new ConnectionMysql().userAccountExsits(ID_C));//检查用户名在数据库中是否存在
         System.out.println(new ConnectionMysql().getPassword(ID_C));//检查用户名在数据库中对应的密码
         System.out.println(Head);
@@ -36,7 +36,7 @@ class EchoHandler implements MessageHandler {
         connection.println(returnMessage);
     }
     public Map<String, String> unpack(String message) {//将client传得消息分离
-    	  String[] strArr = message.split("&");
+    	  String[] strArr = message.split(" ");
     	  Map<String,String> map=new HashMap<String, String>();    
     	  String[] key= {"HEAD","USERACCOUNT","TGS_NAME","TIME"};
     	  for(int i=0; i<strArr.length; i++) {
