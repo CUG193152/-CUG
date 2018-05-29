@@ -1,13 +1,11 @@
 package Client;
 
-import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.Scanner;
 
+import Helper.Des;
+import Helper.Tool;
 import Socket.SocketClient;
-import Tools.Des;
-import Tools.Tool;
 
 public class ClientConnectionV {
 	private SocketClient client;
@@ -34,6 +32,9 @@ public class ClientConnectionV {
 		String message=client.readLine();
 		message=new Des().Decrypt(message, K_C_V);
 		System.out.println(message);
+		if(message.equals(TS5+1)) {//用户认证服务器成功
+			
+		}
 		client.close();
 	}
     

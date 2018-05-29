@@ -2,7 +2,6 @@ package Socket;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.util.ArrayList;
 
 public class SocketServer {
     private ServerSocket serverSocket;
@@ -37,7 +36,8 @@ public class SocketServer {
 	/*
      * Ready for use.
      */
-    public void close() {
+    @SuppressWarnings("deprecation")
+	public void close() {
         try {
             if (serverSocket != null && !serverSocket.isClosed()) {
                 listeningThread.stopRunning();
