@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-class ConnectionThread extends Thread {
+public class ConnectionThread extends Thread {
     private Socket socket;
     private SocketServer socketServer;
     private Connection connection;
@@ -70,5 +70,9 @@ class ConnectionThread extends Thread {
             e.printStackTrace();
         }
     }
+
+	public Connection getConnection() {
+		return connection;
+	}
     
 }

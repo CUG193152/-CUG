@@ -8,14 +8,18 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.UnknownHostException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import Client.MyClient;
 
 
 public class MainUI extends JFrame {
@@ -25,7 +29,7 @@ public class MainUI extends JFrame {
 	int MyleftMoney = 150;
 	
 	JLabel FirstPanelLabelImage = new JLabel(
-			new ImageIcon("/Users/apple/Documents/workspace/kerberos/images/1.png"));
+			new ImageIcon("images/1.png"));
 	JLabel FirstPanelLabelName = new JLabel("帐号  ");
 	JLabel FirstPanelLabelPasswd = new JLabel("密码  ");
 	JTextField FirstPanelFieldName = new JTextField(15);
@@ -109,12 +113,23 @@ public class MainUI extends JFrame {
 			clickButton = (JButton) e.getSource();
 			if (clickButton == FirstPanelButton1 )
 			{
-				new SecondUI().init();
+				System.out.println(new String(FirstPanelFieldPasswd.getPassword()));
+				MyClient myClient=new MyClient(FirstPanelFieldName.getText(),new String(FirstPanelFieldPasswd.getPassword()));
+				if(myClient.getFlag()) {
+					new SecondUI().init(FirstPanelFieldName.getText());
+//					dispose();
+				}else {
+					JOptionPane.showMessageDialog(null, "您的账户密码输入有误"); 
+				}
+				
+				
 			} 
-		}
+		
 	}
-	
+	}
 	public static void main(String[] args) {
 		new MainUI().init();
 	}
+	
 }
+

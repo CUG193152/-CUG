@@ -13,8 +13,13 @@ public class ClientConnectionAS {
 	private String KEY_C_TGS;
 	private SocketClient client;
 	private String Head;
-	ClientConnectionAS(SocketClient client) {
+	private String userAccount;
+	private String userPassword;
+	ClientConnectionAS(SocketClient client,String userAccount,String userPassword) {
 		this.client = client;
+		this.userAccount=userAccount;
+		this.userPassword=userPassword;
+		System.out.println(userPassword);
 		try {
 			startClient();
 		} catch (UnknownHostException e) {
@@ -24,11 +29,11 @@ public class ClientConnectionAS {
 
 	private void startClient() throws UnknownHostException {
 
-		String string = "000001000 " + "chencong " + "T001 " + new Tool().getTime();// 首部+C→AS:IDC ||IDtgs||TS1
+		String string = "000001000 " + userAccount+" " + "T001 " + new Tool().getTime();// 首部+C→AS:IDC ||IDtgs||TS1
 		client.println(string);
 
 		System.out.println("Got the following message from the server:");
-		String Decrypt_News = new Des().Decrypt(client.readLine(), "123123zz");
+		String Decrypt_News = new Des().Decrypt(client.readLine(), userPassword);
 		System.out.println(Decrypt_News);
 		// AS → C : EKC[ Kc,tgs || IDtgs || TS2 || Lifetime2 || Tickettgs ]
 		Map<String, String> map = unpack(Decrypt_News);

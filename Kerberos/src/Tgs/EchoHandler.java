@@ -16,7 +16,6 @@ class EchoHandler implements MessageHandler {
 		System.out.println("Got a message from a client:");
 		System.out.println(message);
 		Map<String, String> map = unpack(message);
-		tgsDisplay.setVisible(true);
 		String Head = map.get("HEAD");
 		if (Head.equals("000010000")) {
 			Tool tool = new Tool();

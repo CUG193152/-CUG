@@ -22,7 +22,7 @@ public class clientUI extends JFrame {
 	// panel 1 登录界面
 	/*********************************************************/
 	JLabel FirstPanelLabelImage = new JLabel(
-			new ImageIcon("/Users/apple/Documents/workspace/kerberos/images/1.png"));
+			new ImageIcon("images/1.png"));
 	JLabel FirstPanelLabelName = new JLabel("帐号  ");
 	JLabel FirstPanelLabelPasswd = new JLabel("密码  ");
 	JTextField FirstPanelFieldName = new JTextField(15);
@@ -35,7 +35,7 @@ public class clientUI extends JFrame {
 	/*********************************************************/
 
 	JLabel SecondPanelUserHeadImage = new JLabel(
-			new ImageIcon("/Users/apple/Documents/workspace/kerberos/images/head1.png"));
+			new ImageIcon("images/head1.png"));
 	JLabel SecondPanelUserName = new JLabel("王晓明");
 //	JLabel SecondPanelLeftMoney = new JLabel("$" + MyleftMoney);
 	JButton SecondPanelViewFilmButton = new JButton("正在上映");
@@ -75,7 +75,7 @@ public class clientUI extends JFrame {
 	JButton FourthPanelConfirmChargeMoneyButton = new JButton("确认");
 	JButton FourthPanelCanelChargeMoneyButton = new JButton("取消");
 	JLabel FourthPanelUserHeadImage = new JLabel(
-			new ImageIcon("/Users/chencong/Downloads/Java-master/project/MovieSystem/picture/head1.png"));
+			new ImageIcon("images/head1.png"));
 	JLabel FourthPanelUserName = new JLabel("王晓明");
 	JLabel FourthPanelLeftMoney = new JLabel("$" + MyleftMoney);
 	JButton FourthPanelViewFilmButton = new JButton("正在上映");
@@ -186,29 +186,29 @@ public class clientUI extends JFrame {
 		SecondPanel.add(new JScrollPane(SecondPanelDown));
 
 		clientMoviePanel film1 = new clientMoviePanel("十二生肖",
-				"/Users/apple/Documents/workspace/kerberos/images/film1.png");
+				"images/film1.png");
 		clientMoviePanel film2 = new clientMoviePanel("饥饿游戏",
-				"/Users/apple/Documents/workspace/kerberos/images/film2.png");
+				"images/film2.png");
 		clientMoviePanel film3 = new clientMoviePanel("听风者",
-				"/Users/apple/Documents/workspace/kerberos/images/film3.png");
+				"images/film3.png");
 		clientMoviePanel film4 = new clientMoviePanel("复仇者联盟",
-				"/Users/apple/Documents/workspace/kerberos/images/film4.png");
+				"images/film4.png");
 		clientMoviePanel film5 = new clientMoviePanel("泰坦尼克号",
-				"/Users/apple/Documents/workspace/kerberos/images/film5.png");
+				"images/film5.png");
 		clientMoviePanel film6 = new clientMoviePanel("师父",
-				"/Users/apple/Documents/workspace/kerberos/images/film6.png");
+				"images/film6.png");
 		clientMoviePanel film7 = new clientMoviePanel("九层妖塔",
-				"/Users/chencong/Downloads/Java-master/project/MovieSystem/picture/film7.png");
+				"images/film7.png");
 		clientMoviePanel film8 = new clientMoviePanel("心花怒放",
-				"/Users/chencong/Downloads/Java-master/project/MovieSystem/picture/film8.png");
+				"images/film8.png");
 		clientMoviePanel film9 = new clientMoviePanel("十二生肖",
-				"/Users/chencong/Downloads/Java-master/project/MovieSystem/picture/film1.png");
+				"images/film1.png");
 		clientMoviePanel film10 = new clientMoviePanel("十二生肖",
-				"/Users/chencong/Downloads/Java-master/project/MovieSystem/picture/film1.png");
+				"images/film1.png");
 		clientMoviePanel film11 = new clientMoviePanel("十二生肖",
-				"/Users/chencong/Downloads/Java-master/project/MovieSystem/picture/film1.png");
+				"images/film1.png");
 		clientMoviePanel film12 = new clientMoviePanel("十二生肖",
-				"/Users/chencong/Downloads/Java-master/project/MovieSystem/picture/film1.png");
+				"images/film1.png");
 		SecondPanelDown.add(film1.panel);
 		SecondPanelDown.add(film2.panel);
 		SecondPanelDown.add(film3.panel);

@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -19,7 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.MatteBorder;
 
-import UI.clientUI.clientMoviePanel.MovieButtonListener;
+import Socket.ConnectionThread;
 
 
 public class SecondUI extends JFrame{
@@ -29,13 +30,14 @@ public class SecondUI extends JFrame{
 	int MyleftMoney = 150;
 	
 	JLabel SecondPanelUserHeadImage = new JLabel(
-			new ImageIcon("/Users/apple/Documents/workspace/kerberos/images/head1.png"));
-	JLabel SecondPanelUserName = new JLabel("王晓明");
+			new ImageIcon("images/head1.png"));
+	JLabel SecondPanelUserName;
 	JButton SecondPanelViewFilmButton = new JButton("正在上映");
 	JButton SecondPanelViewChargedButton = new JButton("我的影票");
 	
-	public void init()
+	public void init(String userAccount)
 	{
+		SecondPanelUserName = new JLabel(userAccount);
 		add(cardPanel);
 
 		JPanel SecondPanel = new JPanel(new BorderLayout());
@@ -55,35 +57,34 @@ public class SecondUI extends JFrame{
 		SecondPanelViewChargedButton.setBackground(Color.GREEN);
 		SecondPanelViewChargedButton.setFont(new Font("宋体", Font.BOLD, 15));
 		SecondPanelViewChargedButton.addActionListener(new MyButtonActionListener());
+		SecondPanelViewChargedButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
 
 		JPanel SecondPanelDown = new JPanel(new GridLayout(3, 4, 10, 10));
 		SecondPanelDown.setBorder(new MatteBorder(20, 5, 10, 30, Color.LIGHT_GRAY));
 		SecondPanel.add(new JScrollPane(SecondPanelDown));
 
 		clientMoviePanel film1 = new clientMoviePanel("十二生肖",
-				"/Users/apple/Documents/workspace/kerberos/images/film1.png");
+				"images/film1.png");
 		clientMoviePanel film2 = new clientMoviePanel("饥饿游戏",
-				"/Users/apple/Documents/workspace/kerberos/images/film2.png");
+				"images/film2.png");
 		clientMoviePanel film3 = new clientMoviePanel("听风者",
-				"/Users/apple/Documents/workspace/kerberos/images/film3.png");
+				"images/film3.png");
 		clientMoviePanel film4 = new clientMoviePanel("复仇者联盟",
-				"/Users/apple/Documents/workspace/kerberos/images/film4.png");
+				"images/film4.png");
 		clientMoviePanel film5 = new clientMoviePanel("泰坦尼克号",
-				"/Users/apple/Documents/workspace/kerberos/images/film5.png");
+				"images/film5.png");
 		clientMoviePanel film6 = new clientMoviePanel("师父",
-				"/Users/apple/Documents/workspace/kerberos/images/film6.png");
+				"images/film6.png");
 		clientMoviePanel film7 = new clientMoviePanel("九层妖塔",
-				"/Users/chencong/Downloads/Java-master/project/MovieSystem/picture/film7.png");
+				"images/film7.png");
 		clientMoviePanel film8 = new clientMoviePanel("心花怒放",
-				"/Users/chencong/Downloads/Java-master/project/MovieSystem/picture/film8.png");
-		clientMoviePanel film9 = new clientMoviePanel("十二生肖",
-				"/Users/chencong/Downloads/Java-master/project/MovieSystem/picture/film1.png");
-		clientMoviePanel film10 = new clientMoviePanel("十二生肖",
-				"/Users/chencong/Downloads/Java-master/project/MovieSystem/picture/film1.png");
-		clientMoviePanel film11 = new clientMoviePanel("十二生肖",
-				"/Users/chencong/Downloads/Java-master/project/MovieSystem/picture/film1.png");
-		clientMoviePanel film12 = new clientMoviePanel("十二生肖",
-				"/Users/chencong/Downloads/Java-master/project/MovieSystem/picture/film1.png");
+				"images/film8.png");
 		SecondPanelDown.add(film1.panel);
 		SecondPanelDown.add(film2.panel);
 		SecondPanelDown.add(film3.panel);
@@ -92,10 +93,6 @@ public class SecondUI extends JFrame{
 		SecondPanelDown.add(film6.panel);
 		SecondPanelDown.add(film7.panel);
 		SecondPanelDown.add(film8.panel);
-		SecondPanelDown.add(film9.panel);
-		SecondPanelDown.add(film10.panel);
-		SecondPanelDown.add(film11.panel);
-		SecondPanelDown.add(film12.panel);
 
 		
 		this.setSize(800, 650);
@@ -160,7 +157,7 @@ public class SecondUI extends JFrame{
 					new ThirdUI().init();
 				}
 				else if (clickButton == ViewIntroduce) {
-					JTextArea textArea = new JTextArea("这是电影的介绍!");
+					JTextArea textArea = new JTextArea("这是一部非常有趣的电影!");
 					textArea.setColumns(10);
 					textArea.setRows(5);
 					textArea.setLineWrap(true);

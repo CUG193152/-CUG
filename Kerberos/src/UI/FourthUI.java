@@ -60,9 +60,13 @@ public class FourthUI {
 				if (clickButton == SeatButton.get(i)) {
 					if (SeatButton.get(i).getBackground() == Color.GREEN) {
 						SeatButton.get(i).setBackground(Color.RED);
+						SeatButton.get(i).setOpaque(true);
+						SeatButton.get(i).setBorderPainted(false);
 						
 					} else {
 						SeatButton.get(i).setBackground(Color.GREEN);
+						SeatButton.get(i).setOpaque(true);
+						SeatButton.get(i).setBorderPainted(false);
 					}
 					break;
 				}

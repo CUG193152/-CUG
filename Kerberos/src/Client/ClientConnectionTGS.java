@@ -16,15 +16,16 @@ public class ClientConnectionTGS {
 	private String ticket_v;
 	private String K_C_V;
 	private String Head;
-	ClientConnectionTGS(SocketClient client, String K_C_TGS, String ticket) throws UnknownHostException {
+	private String IDc;
+	ClientConnectionTGS(SocketClient client, String K_C_TGS, String ticket,String userAccount) throws UnknownHostException {
 		this.client = client;
 		this.K_C_TGS = K_C_TGS;
 		this.ticket = ticket;
+		this.IDc=userAccount;
 		startClient();
 	}
 
 	private void startClient() throws UnknownHostException {
-		String IDc = "chencong";
 		String Adc = InetAddress.getLocalHost().getHostAddress();
 		String TS3 = new Tool().getTime();
 		String ID_V = "V001";

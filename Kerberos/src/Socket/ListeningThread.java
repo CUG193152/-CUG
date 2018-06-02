@@ -9,9 +9,11 @@ class ListeningThread extends Thread {
     private SocketServer socketServer;
     private ServerSocket serverSocket;
     private Vector<ConnectionThread> connectionThreads;
-    private Vector<ConnectionThread> notRunningConnectionThreads;
+	private Vector<ConnectionThread> notRunningConnectionThreads;
     private boolean isRunning;
-
+    public Vector<ConnectionThread> getConnectionThreads() {
+		return connectionThreads;
+	}
     public ListeningThread(SocketServer socketServer, ServerSocket serverSocket) {
         this.socketServer = socketServer;
         this.serverSocket = serverSocket;
@@ -46,7 +48,7 @@ class ListeningThread extends Thread {
                 connectionThreads.addElement(connectionThread);
                 connectionThread.start();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
+                // TODO Auto-generated catch block简介
                 e.printStackTrace();
             }
         }

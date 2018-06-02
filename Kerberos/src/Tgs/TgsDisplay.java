@@ -76,6 +76,7 @@ public class TgsDisplay extends JFrame implements ActionListener {
 		textArea.setEditable(false);
 		scrollPane.setViewportView(textArea);
 		setResizable(false);
+		this.setVisible(true);
 
 	}
 	@Override

@@ -15,7 +15,6 @@ class EchoHandler implements MessageHandler {
 		System.out.println("Got a message from a client:");
 		System.out.println(message);
 		frame.appenedMessage(message+"\n");
-		frame.setVisible(true);
 		Map<String, String> map = unpack(message);
 		String Head = map.get("HEAD");
 		String TS1 = map.get("TIME");
@@ -34,6 +33,8 @@ class EchoHandler implements MessageHandler {
 						"000100000 " + K_C_TGS + " " + ID_TGS + " " + TS2 + " " + Lifetime + " " + Ticket_TGS, K_C);
 				System.out.println("Send back the message back to the client.");
 				connection.println(returnMessage);
+			}else {
+				connection.println("");
 			}
 		}
 
